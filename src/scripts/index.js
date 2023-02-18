@@ -35,14 +35,15 @@ function onInput(evt) {
         Notiflix.Notify.info(
           'Too many matches found. Please enter a more specific name.'
         );
-      } else if (countries.length >= 2 || countries.length < 10) {
+      } else if (countries.length >= 2 && countries.length < 10) {
         countryInfoReset();
         createMarkupCoutryList(countries);
       } else if (countries.length === 1) {
-        countryListReset();
         createMarkupCoutryInfo(countries);
+        countryListReset();
       }
-    });
+    })
+    .catch(error => console.log(error));
 }
 
 function countryListReset() {
@@ -56,14 +57,29 @@ function countryInfoReset() {
 function createMarkupCoutryList(countries) {
   const markupCoutryList = countries
     .map(country => {
-      console.log(country);
-      return `<p><img src="${country.flags.svg}" width="40px" height="30px ">
-         <b>${country.name.official}</b></p> `;
+      return `<div><img src="${country.flags.svg}" width="40px" height="30px ">
+         <span class ="country-name">${country.name.official}</span></div> `;
     })
     .join('');
   countryList.innerHTML = markupCoutryList;
 }
 
 function createMarkupCoutryInfo(countries) {
-  console.log(countries);
+  const markupCoutryInfo = countries
+    .map(country => {
+      console.log(country);
+      return `<div><img src="${country.flags.svg}" width="60px" height="45px">
+    <span class="country-info-name">${country.name.official}</span>
+    <ul >
+    <li><b>Capital: </b>${country.capital}
+    </li>
+    <li><b>Population: </b>${country.population}
+    </li>
+    <li><b>Languages: </b>${Object.values(country.languages)}
+    </li>
+    </ul>
+    </div>`;
+    })
+    .join('');
+  countryInfo.innerHTML = markupCoutryInfo;
 }

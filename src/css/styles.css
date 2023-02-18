@@ -18,3 +18,20 @@ body {
   max-width: 320px;
   margin-bottom: 16px;
 }
+.country-list {
+  padding: 8px;
+}
+
+.country-name {
+  vertical-align: super;
+  font-size: 20px;
+}
+.country-info-name {
+  vertical-align: super;
+  font-size: 30px;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
