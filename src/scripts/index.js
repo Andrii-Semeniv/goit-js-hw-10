@@ -67,7 +67,6 @@ function createMarkupCoutryList(countries) {
 function createMarkupCoutryInfo(countries) {
   const markupCoutryInfo = countries
     .map(country => {
-      console.log(country);
       return `<div><img src="${country.flags.svg}" width="60px" height="45px">
     <span class="country-info-name">${country.name.official}</span>
     <ul >
